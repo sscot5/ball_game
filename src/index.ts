@@ -13,15 +13,19 @@ let ySpeed = speed;
 
 let radius = 10;
 
-ctx.fillStyle = "blue";    
+ctx.fillStyle = "green";    
 let second = 1000;
 let fps = 60;
+
+let circle = {
+    color: "blue"
+}
 
 // draw function
 setInterval(() => {
     clearCanvas();
     updateBallPosition();
-    drawBall();
+    drawShapes();
 }, second / fps);
 
 // updates
@@ -37,9 +41,21 @@ function updateBallPosition() {
 }
 
 function drawBall() {
+    ctx.fillStyle = circle.color;
     ctx.beginPath();
     ctx.arc(x, y, radius, 0, Math.PI * 2, true);
     ctx.fill();
+}
+
+function drawRectangle() {
+    ctx.fillStyle = "green";
+    ctx.fillRect(250, 250, 200, 200);
+
+}
+
+function drawShapes() {
+    drawRectangle(); 
+    drawBall();
 }
 
 function checkBounds() {
