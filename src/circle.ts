@@ -1,9 +1,11 @@
+import { Point} from './point';
+
 export class Circle {
+    point: Point;
     color: string;
     radius: number;
 
-    constructor(color: string, radius: number) {
-        console.log('new Cirlce');
+    constructor(point: Point, color: string, radius: number) {
         this.color = color;
         this.radius = radius;
     }
