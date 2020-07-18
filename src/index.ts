@@ -1,3 +1,5 @@
+import { Circle } from './circle';
+
 let canvasElement = document.createElement('canvas');
 canvasElement.width = innerWidth;
 canvasElement.height = innerHeight;
@@ -11,15 +13,11 @@ let xSpeed = speed;
 let y = 50;
 let ySpeed = speed;
 
-let radius = 10;
-
 ctx.fillStyle = "green";    
 let second = 1000;
 let fps = 60;
 
-let circle = {
-    color: "blue"
-}
+let circle = new Circle("blue", 10);
 
 // draw function
 setInterval(() => {
@@ -43,7 +41,7 @@ function updateBallPosition() {
 function drawBall() {
     ctx.fillStyle = circle.color;
     ctx.beginPath();
-    ctx.arc(x, y, radius, 0, Math.PI * 2, true);
+    ctx.arc(x, y, circle.radius, 0, Math.PI * 2, true);
     ctx.fill();
 }
 
@@ -60,16 +58,16 @@ function drawShapes() {
 
 function checkBounds() {
 
-    if (x < 0 + radius) {
+    if (x < 0 + circle.radius) {
         xSpeed = speed;
     }
-    if (x > innerWidth - radius) {
+    if (x > innerWidth - circle.radius) {
         xSpeed = -speed;
     }
-    if (y < 0 + radius) {
+    if (y < 0 + circle.radius) {
         ySpeed = speed;
     }
-    if (y > innerHeight - radius) {
+    if (y > innerHeight - circle.radius) {
         ySpeed = -speed;
     }
 }
